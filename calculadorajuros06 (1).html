@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simulação Venda Parcelada Melenek Imports</title>
+  <style>
+    body {
+      color: #333333;
+    }
+    
+    h1 {
+      color: #333333;
+      font-size: 20px;
+    }
+    
+    h2 {
+      color: #333333;
+      font-size: 16px;
+    }
+    
+    #parcelas {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function calcularValorTotal() {
+      var valorVenda = parseFloat(document.getElementById('valorVenda').value);
+      var parcelas = parseInt(document.getElementById('parcelas').value);
+      var juros = obterJuros(parcelas);
+      
+      var valorTotal = valorVenda * (1 + (juros / 100));
+      var valorParcela = valorTotal / parcelas;
+      
+      document.getElementById('valorParcela').textContent = valorParcela.toFixed(2);
+      document.getElementById('valorTotal').textContent = valorTotal.toFixed(2);
+    }
+    
+    function obterJuros(parcelas) {
+      if (parcelas === 1) {
+        return 2.50;
+      } else if (parcelas === 2) {
+        return 6.00;
+      } else if (parcelas === 3) {
+        return 6.30;
+      } else if (parcelas === 4) {
+        return 6.60;
+      } else if (parcelas === 5) {
+        return 7.20;
+      } else if (parcelas === 6) {
+        return 7.50;
+      } else if (parcelas === 7) {
+        return 8.40;
+      } else if (parcelas === 8) {
+        return 8.80;
+      } else if (parcelas === 9) {
+        return 9.50;
+      } else if (parcelas === 10) {
+        return 9.70;
+      } else if (parcelas === 11) {
+        return 10.30;
+      } else if (parcelas === 12) {
+        return 10.80;
+      } else {
+        return 0;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1 style="font-size: 24px;">Simulação Venda Parcelada Melenek Imports</h1>
+  
+  <label for="valorVenda">Valor da Venda:</label>
+  <input type="number" id="valorVenda">
+  
+  <label for="parcelas">Número de Parcelas:</label>
+  <select id="parcelas" onclick="calcularValorTotal()">
+    <option value="1">1x</option>
+    <option value="2">2x</option>
+    <option value="3">3x</option>
+    <option value="4">4x</option>
+    <option value="5">5x</option>
+    <option value="6">6x</option>
+    <option value="7">7x</option>
+    <option value="8">8x</option>
+    <option value="9">9x</option>
+    <option value="10">10x</option>
+    <option value="11">11x</option>
+    <option value="12">12x</option>
+  </select>
+  
+  <h2 style="font-size: 20px;">Valor de cada Parcela:</h2>
+  <p style="font-size: 18px;">R$ <span id="valorParcela"></span></p>
+  
+  <h2 style="font-size: 20px;">Valor Total:</h2>
+  <p style="font-size: 18px;">R$ <span id="valorTotal"></span></p>
+</body>
+</html>
